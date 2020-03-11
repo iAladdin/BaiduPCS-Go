@@ -1470,7 +1470,7 @@ func main() {
 				pcscommand.RunExport(pcspaths, &pcscommand.ExportOptions{
 					RootPath:  c.String("root"),
 					SavePath:  c.String("out"),
-					MaxRerty:  c.Int("retry"),
+					MaxRetry:  c.Int("retry"),
 					Recursive: c.Bool("r"),
 				})
 				return nil
