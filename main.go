@@ -152,7 +152,7 @@ func main() {
 				lineArgs                   = args.Parse(line)
 				numArgs                    = len(lineArgs)
 				acceptCompleteFileCommands = []string{
-					"cd", "cp", "download", "export", "fixmd5", "locate", "ls", "meta", "mkdir", "mv", "rapidupload", "rm", "share", "tree", "upload",
+					"cd", "cp", "download","du", "export", "fixmd5", "locate", "ls", "meta", "mkdir", "mv", "rapidupload", "rm", "share", "tree", "upload",
 				}
 				closed = strings.LastIndex(line, " ") == len(line)-1
 			)
@@ -798,6 +798,17 @@ func main() {
 			Before:    reloadFn,
 			Action: func(c *cli.Context) error {
 				pcscommand.RunTree(c.Args().Get(0))
+				return nil
+			},
+		},
+		{
+			Name:      "du",
+			Usage:     "统计并列出目录和文件的大小，自动导出可视化数据文件，可以通过 http://ialaddin.github.io/daisybaidu/ 进行可视化",
+			UsageText: app.Name + " du <目录>",
+			Category:  "百度网盘",
+			Before:    reloadFn,
+			Action: func(c *cli.Context) error {
+				pcscommand.RunDu(c.Args().Get(0))
 				return nil
 			},
 		},
